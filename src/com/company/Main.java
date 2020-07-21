@@ -6,34 +6,32 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-int cont=0;
-        int[] loteria = new int[6];
-        do {
-            //Generar nº aleatorio
-            Random rd = new Random();
-        int numeroAleatorio = rd.nextInt(50);
-            //comprobar si ya existe
-            if (!comprobarArray(numeroAleatorio,loteria)){
-               loteria[cont] =numeroAleatorio;
-               cont++;
+        Scanner leer=new Scanner(System.in);
+        String [][]ciudades= new String[10][2] ;
+        for (int i = 0; i < 10 ; i++) {
+            System.out.println(" Nombre de ciudad:");
+            String ciudad=leer.nextLine();
+            System.out.println(" Temperatura: ");
+            String temperatura=leer.nextLine();
+            ciudades[i][0]=ciudad;
+            ciudades[i][1]=temperatura;
+
+        }
+        double media=0.0;
+        for (int i = 0; i <ciudades.length ; i++) {
+            media+=convertirEntero(ciudades[i][1]);
+        }
+       media=media/10;
+        System.out.println("La temperatura media es : "+ media);
+        for (int i = 0; i <ciudades.length ; i++) {
+            if(convertirEntero(ciudades[i][1])<media){
+                System.out.println("Ciudad: " + ciudades[i][0]+", tempreatura: " + ciudades[i][1]);
 
             }
-        }while (cont<6);
-
-        for (int i = 0; i <loteria.length ; i++) {
-            System.out.print(loteria[i]+",");
 
         }
-        System.out.println(" ");
     }
-
-    private static boolean comprobarArray(int numeroAleatorio, int[] loteria) {
-        for (int i = 0; i <loteria.length ; i++) {
-            if(loteria[i]==numeroAleatorio) return true;
-
-
-        }
-        return false;
+    public static int convertirEntero(String valor){
+        return Integer.parseInt(valor);
     }
-
 }

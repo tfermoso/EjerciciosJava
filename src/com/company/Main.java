@@ -7,33 +7,35 @@ import java.util.Random;
 
 public class Main {
 
+    private static String aux;
+
     public static void main(String[] args) {
-
-        String[][] temperaturas=new String[10][2];
-        Scanner leer=new Scanner(System.in);
+        String[]textos=new String[10];
+        Scanner leer= new Scanner(System.in);
         for (int i = 0; i <10 ; i++) {
-            System.out.println("Nombre ciudad: ");
-            String ciudad=leer.nextLine();
-            System.out.println("Temperatura: ");
-            String temp=leer.nextLine();
-            temperaturas[i][0]=ciudad;
-            temperaturas[i][1]=temp;
+            System.out.println("Introduce texto: ");
+            textos[i]=leer.nextLine();
         }
-        double media=0.0;
-        for (int i = 0; i <temperaturas.length ; i++) {
-            media+=convertirEntero(temperaturas[i][1]);
-        }
-        media=media/10;
-        System.out.println("La temperatura media es: "+media);
-        for (int i = 0; i <temperaturas.length ; i++) {
-            if (convertirEntero(temperaturas[i][1])<media){
-                System.out.println("Ciudad: "+temperaturas[i][0]+", temperatura: "+temperaturas[i][1]);
+        int minimo;
+        for (int i = 0; i <textos.length ; i++) {
+            minimo=i;
+            for (int j = 0; j <textos.length ; j++) {
+                if (textos[i].length()<textos[minimo].length()){
+                    minimo=j;
+                }
+            
+                
             }
-
+            aux=textos[i];
+            textos[i]=textos[minimo];
+            textos[minimo]=aux;
+            
         }
-    }
-    public static int convertirEntero(String valor){
-        return Integer.parseInt(valor);
+        for (int i = 0; i <textos.length ; i++) {
+            System.out.println(textos[i]);            
+        }
+
+
     }
 
     }

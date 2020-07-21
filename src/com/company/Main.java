@@ -1,43 +1,38 @@
 package com.company;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-import org.w3c.dom.ls.LSOutput;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
-
-        int[] loteria = new int[6];
-        int contador = 0;
-        do {
-            //Generar numero aleatorio
-            Random rand = new Random();
-            int numero = rand.nextInt(50);
-
-            //Comprueba si ya lo tengo
-            if (!comprobarArray(numero, loteria)) {
-                loteria[contador] = numero;
-                contador++;
-            }
-
-        } while (contador < 6);
-        for (int i = 0; i < loteria.length; i++) {
-            System.out.println(loteria[i] + " ");
+        String[][] temperaturas = new String[10][2];
+        Scanner leer = new Scanner(System.in);
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Nombre ciudad: ");
+            String ciudad = leer.nextLine();
+            System.out.println("Temperatura: ");
+            String temp = leer.nextLine();
+            temperaturas[i][0] = ciudad;
+            temperaturas[i][1] = temp;
         }
-        System.out.println(" ");
+        double media = 0.0;
+        for (int i = 0; i < temperaturas.length; i++) {
+            media += convertirEntero(temperaturas[i][1]);
+            System.out.println();
+
+        }
+        media = media / 10;
+        System.out.println("La temperatura media es: " + media);
+        for (int i = 0; i < temperaturas.length; i++) {
+            if (convertirEntero(temperaturas[i][1]) < media) {
+                System.out.println("Ciudad: " + temperaturas[i][0] + ", Temperatura: " + temperaturas[i][1]);
+            }
+        }
     }
 
-    private static boolean comprobarArray(int numero, int[] loteria) {
-        for (int i = 0; i < loteria.length; i++) {
-            if (loteria[i] == numero) return true;
-
-        }
-        return false;
+    public static int convertirEntero(String valor) {
+        return Integer.parseInt(valor);
     }
 }

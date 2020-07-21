@@ -1,28 +1,39 @@
 package com.company;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        Scanner leer=new Scanner(System.in);
-        int[] numeros=new int[20];
-        int num,suma=0;
-        for (int i = 0; i < 20; i++) {
-            if(suma>100){
-                numeros[i]=0;
-            }else{
-                System.out.println("Introduce número: ");
-                num=leer.nextInt();
-                leer.nextLine();
-                suma+=num;
-                numeros[i]=num;
+        int[] loteria=new int[6];
+        int contador=0;
+        do {
+            //Genero número aleatorio
+            Random rand = new Random();
+            Integer numero = rand.nextInt(50);
+
+            //Compruebo si ya lo tengo
+            if(! comprobarArray(numero,loteria)){
+                loteria[contador] = numero;
+                contador++;
             }
-        }
-        for (int i = 0; i < 20; i++) {
-            System.out.print(numeros[i]+",");
+        }while(contador<6);
+
+        for (int i = 0; i < loteria.length; i++) {
+            System.out.print(loteria[i]+",");
         }
         System.out.println("");
     }
+
+    private static boolean comprobarArray(Integer numero, int[] loteria) {
+        for (int i = 0; i < loteria.length; i++) {
+            if(loteria[i]==numero) return true;
+        }
+        return false;
+    }
+
 }

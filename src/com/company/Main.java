@@ -5,29 +5,30 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-        int[] num = new int[5];
+        int[] num = new int[20];
         int cont = 0;
         int num1;
-        System.out.println("Introduce 5 números positivos: ");
+        int total = 0;
 
 
-        do {
-           System.out.println("Introduce un numero");
-                num1 = leer.nextInt();
-                leer.nextLine();
-                if(num1>0){
-num[cont]=num1;
-cont++;
+
+            for (int i = 0; i < 20; i++) {
+
+                if (total > 100) {
+                    num[i] = 0;
+                } else {
+                    System.out.println("Introduce un numero");
+                    num1 = leer.nextInt();
+                    leer.nextLine();
+                    total += num1;
+                    num[i] = num1;
+
+                }
             }
-
-
-
-        } while (cont < 5);
-        System.out.println("numeros introducidos ");
-        for (int i = 4; i >=0 ; i--) {
+        for (int i = 0; i <20 ; i++) {
             System.out.println(num[i]+",");
-        }
-        System.out.printf("");
-    }
 
-}
+        }
+        System.out.println("");
+        }
+    }

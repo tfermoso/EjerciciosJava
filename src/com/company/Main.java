@@ -1,34 +1,39 @@
 package com.company;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner leer = new Scanner(System.in);
-        int[] num = new int[20];
-        int cont = 0;
-        int num1;
-        int total = 0;
+int cont=0;
+        int[] loteria = new int[6];
+        do {
+            //Generar nº aleatorio
+            Random rd = new Random();
+        int numeroAleatorio = rd.nextInt(50);
+            //comprobar si ya existe
+            if (!comprobarArray(numeroAleatorio,loteria)){
+               loteria[cont] =numeroAleatorio;
+               cont++;
 
-
-
-            for (int i = 0; i < 20; i++) {
-
-                if (total > 100) {
-                    num[i] = 0;
-                } else {
-                    System.out.println("Introduce un numero");
-                    num1 = leer.nextInt();
-                    leer.nextLine();
-                    total += num1;
-                    num[i] = num1;
-
-                }
             }
-        for (int i = 0; i <20 ; i++) {
-            System.out.println(num[i]+",");
+        }while (cont<6);
+
+        for (int i = 0; i <loteria.length ; i++) {
+            System.out.print(loteria[i]+",");
 
         }
-        System.out.println("");
-        }
+        System.out.println(" ");
     }
+
+    private static boolean comprobarArray(int numeroAleatorio, int[] loteria) {
+        for (int i = 0; i <loteria.length ; i++) {
+            if(loteria[i]==numeroAleatorio) return true;
+
+
+        }
+        return false;
+    }
+
+}

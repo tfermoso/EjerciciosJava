@@ -1,29 +1,33 @@
 package com.company;
-
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-        int [] num=new int[10];
-        System.out.println("Introduce 10 números: ");
-        for (int i = 0; i < 10; i++) {
+        int[] num = new int[5];
+        int cont = 0;
+        int num1;
+        System.out.println("Introduce 5 números positivos: ");
 
-            num[i] = leer.nextInt();
-            leer.nextLine();
-        }
-        System.out.println("Numero a comparar: ");
-        int numero=leer.nextInt();
-        leer.nextLine();
-        int contador=0;
-        leer.nextLine();
-        for (int i = 0; i < num.length   ; i++) {
-            if(num[i]>numero){
-                contador++;
+
+        do {
+           System.out.println("Introduce un numero");
+                num1 = leer.nextInt();
+                leer.nextLine();
+                if(num1>0){
+num[cont]=num1;
+cont++;
             }
 
+
+
+        } while (cont < 5);
+        System.out.println("numeros introducidos ");
+        for (int i = 4; i >=0 ; i--) {
+            System.out.println(num[i]+",");
         }
-        System.out.println("Los números del array que son mayores que: " + numero + "son: " + +contador);
+        System.out.printf("");
     }
+
 }

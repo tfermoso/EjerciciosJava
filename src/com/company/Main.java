@@ -20,7 +20,7 @@ public class Main {
 
         } while (contador < 5);
         System.out.println("Números introducidos: ");
-        for (int i = 4; i > 0 ; i--) {
+        for (int i = 4; i >= 0 ; i--) {
             System.out.println(numeros[i]+ ",");
 
             }

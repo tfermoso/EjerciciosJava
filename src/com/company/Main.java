@@ -19,7 +19,7 @@ public class Main {
             for (int j = i + 1; j < textos.length; j++) {
                 if (textos[j].length() < textos[minimo].length()) {
                     minimo = j;
-                } else if (textos[j].length() < textos[minimo].length()) {
+                } else if (textos[j].length() == textos[minimo].length()) {
                     if (numeroVocales(textos[j]) < numeroVocales(textos[minimo])) {
                         minimo = j;
                     }

@@ -8,14 +8,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static String aux;
-    private static Scanner leer;
+   // private static String aux;
+    //private static Scanner leer;
 
     public static void main(String[] args) {
 
         //leer los 24 numeros
         int[] numeros = new int[24];
-        Scanner reader = new Scanner(System.in);
+        Scanner leer = new Scanner(System.in);
         for (int i = 0; i < 24; i++) {
             System.out.println("Introduce número: ");
             numeros[i] = leer.nextInt();

@@ -5,48 +5,50 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
-        String[] textos = new String[10];
+        //leemos 24 numeros
+        int[] numeros = new int[24];
         Scanner leer = new Scanner(System.in);
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Introduce texto: ");
-            textos[i] = leer.nextLine();
+        for (int i = 0; i < 24; i++) {
+            System.out.println("Introduce numero: ");
+            numeros[i] = leer.nextInt();
+            leer.nextLine();
         }
         int minimo;
-        String aux;
-        for (int i = 0; i < textos.length - 1; i++) {
+        int aux;
+        for (int i = 0; i < numeros.length - 1; i++) {
             minimo = i;
-            for (int j = i + 1; j < textos.length; j++) {
-                if (textos[j].length() < textos[minimo].length()) {
+            for (int j = i + 1; j < numeros.length; j++) {
+                if (numeros[j] < numeros[minimo]) {
                     minimo = j;
-                } else if (textos[j].length() == textos[minimo].length()) {
-                    if (numeroVocales(textos[j]) > numeroVocales(textos[minimo])) {
-                        minimo = j;
-                    }
                 }
             }
-            aux = textos[i];
-            textos[i] = textos[minimo];
-            textos[minimo] = aux;
-
+            aux = numeros[i];
+            numeros[i] = numeros[minimo];
+            numeros[minimo] = aux;
         }
-        for (int i = 0; i < textos.length; i++) {
-            System.out.println(textos[i]);
 
+//llenar la matriz
+        int indice = 0;
+        int[][] matrizNumeros = new int[4][6];
+        for (int i = 0; i < matrizNumeros.length; i++)
+            for (int j = 0; j < matrizNumeros[0].length; j++) {
+                matrizNumeros[i][j] = numeros[indice];
+                indice++;
+            }
+        //mostrar matriz
+        for (int i = 0; i < matrizNumeros.length; i++) {
+            for (int j = 0; j < matrizNumeros[0].length; j++) {
+                System.out.println(matrizNumeros[i][j] + "/");
+
+
+            }
         }
+        System.out.println("");
+
+    }
     }
 
-    public static int numeroVocales(String palabra) {
-        int vocales = 0;
-        for (int x = 0; x < palabra.length(); x++) {
-            char letraActual = palabra.charAt(x);
-            if (esVocal(letraActual)) vocales++;
 
-        }
-        return vocales;
-    }
 
-    private static boolean esVocal(char letra) {
-        return "aeiou".contains(String.valueOf(letra).toLowerCase());
-    }
-}
+
+

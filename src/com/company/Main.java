@@ -5,52 +5,54 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-       //dar 2 numeros. Dar la suma de los numeros entre medias
-        Scanner leer=new Scanner(System.in);
-        int numero1=leerNumero();
-        int numero2=leerNumero();
-        int suma =devolverSuma(numero1,numero2);
-        System.out.println(suma);
-        int factorial=factorialNumero(suma);
-        String factorialSinCalcular=factorialSinCalcular(suma);
-        System.out.println(factorial);
-        System.out.println(factorialSinCalcular);
-    }
-
-    private static String factorialSinCalcular(int suma) {
-        String factorial=String.valueOf(suma);
-        for (int i = 1; i < suma; i++) {
-            factorial+="·"+String.valueOf(suma-i);
-        }
-        return factorial;
-    }
-
-    private static int factorialNumero(int suma) {
-        int factorial=1;
-        for (int i = 2; i <=suma ; i++) {
-            factorial= factorial*i;
+       //Stack LIFO 10 Strings. Metodo meter. Metodo sacar.
+        Stack<String> pila = new Stack<>();
+        boolean saliendo=false;
+        do {
+            System.out.println("Elije opcion: \n" +
+                    "1-Meter cadena \n" +
+                    "2-Sacar cadena \n" +
+                    "3- Leer pila \n" +
+                    "4-Salir");
+            Scanner leer = new Scanner(System.in);
+            int opcion = leer.nextInt();
+            leer.nextLine();
+            switch (opcion) {
+                case 1:
+                    meterCadena(pila);
+                    break;
+                case 2:
+                    sacarCadena(pila);
+                    break;
+                case 3:
+                    leerPila(pila);
+                    break;
+                case 4:
+                    saliendo=true;
+                    break;
+                default:
+                    break;
             }
-        return factorial;
+        }while (!saliendo);
     }
 
-    private static int devolverSuma(int numero1, int numero2) {
-       int suma=0;
-       if (numero1<numero2) {
-           for (int i = numero1+1; i <numero2; i++) {
-                suma+=i;
-           }
-       }else if (numero2<numero1){
-           for (int i = numero2+1; i <numero1 ; i++) {
-               suma+=i;
-           }
-       }
-       return suma;
+    private static void leerPila(Stack<String> pila) {
+        System.out.println("Pila actual "+pila);
     }
 
-    private static int leerNumero() {
-        Scanner leer=new Scanner(System.in);
-        System.out.println("Introduzca numero");
-        int numer=leer.nextInt();
-        return numer;
+    private static void sacarCadena(Stack<String> pila) {
+        pila.pop();
+        System.out.println("Elemento eliminado");
+    }
+
+    private static void meterCadena(Stack<String> pila) {
+        if (pila.size()!=10) {
+            Scanner leer = new Scanner(System.in);
+            System.out.println("Introduzca cadena: ");
+            String cadena = leer.nextLine();
+            pila.push(cadena);
+        }else {
+            System.out.println("Pila llena");
+        }
     }
 }

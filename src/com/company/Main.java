@@ -23,7 +23,7 @@ public class Main {
                 if (textos[j].length()<textos[minimo].length()){
                     minimo=j;
                 }else if(textos[j].length()== textos[minimo].length()){
-                    if (numerovocales (textos[j])< numerovocales(textos[minimo])){
+                    if (numerovocales (textos[j])> numerovocales(textos[minimo])){
                         minimo=j;
 
                     }

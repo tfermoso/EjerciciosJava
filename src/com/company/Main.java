@@ -1,38 +1,52 @@
 package com.company;
 
-
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        String[][] temperaturas = new String[10][2];
+        String[] textos = new String[10];
         Scanner leer = new Scanner(System.in);
         for (int i = 0; i < 10; i++) {
-            System.out.println("Nombre ciudad: ");
-            String ciudad = leer.nextLine();
-            System.out.println("Temperatura: ");
-            String temp = leer.nextLine();
-            temperaturas[i][0] = ciudad;
-            temperaturas[i][1] = temp;
+            System.out.println("Introduce texto: ");
+            textos[i] = leer.nextLine();
         }
-        double media = 0.0;
-        for (int i = 0; i < temperaturas.length; i++) {
-            media += convertirEntero(temperaturas[i][1]);
-            System.out.println();
+        int minimo;
+        String aux;
+        for (int i = 0; i < textos.length - 1; i++) {
+            minimo = i;
+            for (int j = i + 1; j < textos.length; j++) {
+                if (textos[j].length() < textos[minimo].length()) {
+                    minimo = j;
+                } else if (textos[j].length() < textos[minimo].length()) {
+                    if (numeroVocales(textos[j]) > numeroVocales(textos[minimo])) {
+                        minimo = j;
+                    }
+                }
+            }
+            aux = textos[i];
+            textos[i] = textos[minimo];
+            textos[minimo] = aux;
 
         }
-        media = media / 10;
-        System.out.println("La temperatura media es: " + media);
-        for (int i = 0; i < temperaturas.length; i++) {
-            if (convertirEntero(temperaturas[i][1]) < media) {
-                System.out.println("Ciudad: " + temperaturas[i][0] + ", Temperatura: " + temperaturas[i][1]);
-            }
+        for (int i = 0; i < textos.length; i++) {
+            System.out.println(textos[i]);
+
         }
     }
 
-    public static int convertirEntero(String valor) {
-        return Integer.parseInt(valor);
+    public static int numeroVocales(String palabra) {
+        int vocales = 0;
+        for (int x = 0; x < palabra.length(); x++) {
+            char letraActual = palabra.charAt(x);
+            if (esVocal(letraActual)) vocales++;
+
+        }
+        return vocales;
+    }
+
+    private static boolean esVocal(char letra) {
+        return "aeiou".contains(String.valueOf(letra).toLowerCase());
     }
 }

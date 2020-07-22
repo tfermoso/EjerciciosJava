@@ -17,7 +17,22 @@ public class Main {
         leer.nextLine();
         int suma = calcularSumaNumeros(a, b);
         System.out.println(suma);
+        System.out.println(factorial(suma));
 
+    }
+
+    private static int factorial(int n) {//Recursiva
+        if (n<=1) return 1;
+        return n*factorial(n-1);
+
+    }
+    private static int factorialIterativo(int n){//No recursivo
+        int producto=1;
+        while (n>1){
+            producto=producto*n;
+            n--;
+        }
+        return producto;
     }
 
     private static int calcularSumaNumeros(int a, int b) {
@@ -36,6 +51,9 @@ public class Main {
         return suma;
 
         }
+
+
+
     }
 
 

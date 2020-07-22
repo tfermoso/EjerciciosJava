@@ -14,6 +14,21 @@ public class Main {
         int b = leer.nextInt();
         int suma = calcularSumaNumeros(a, b);
         System.out.println(suma);
+        System.out.println(factorial(suma));
+    }
+
+    private static int factorial(int n) {
+        if (n <= 1) return 1;
+        return n * factorial(n - 1);
+    }
+
+    private static int factorialInteractiva(int n) {
+        int producto = 1;
+        while (n > 1) {
+            producto = producto * n;
+            n--;
+        }
+        return producto;
     }
 
     private static int calcularSumaNumeros(int a, int b) {

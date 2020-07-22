@@ -1,9 +1,8 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import jdk.nashorn.internal.objects.NativeString;
+
 import java.util.Scanner;
-import java.util.Random;
 
 public class Main {
 
@@ -17,14 +16,18 @@ public class Main {
             textos[i]=leer.nextLine();
         }
         int minimo;
-        for (int i = 0; i <textos.length ; i++) {
+        String aux;
+        for (int i = 0; i <textos.length-1 ; i++) {
             minimo=i;
-            for (int j = 0; j <textos.length ; j++) {
-                if (textos[i].length()<textos[minimo].length()){
+            for (int j = i+1; j <textos.length ; j++) {
+                if (textos[j].length()<textos[minimo].length()){
                     minimo=j;
+                }else if(textos[j].length()<textos[minimo].length()){
+                    if (numerovocales (textos[j])>numerovocales(textos[minimo])){
+                        minimo=j;
+
+                    }
                 }
-            
-                
             }
             aux=textos[i];
             textos[i]=textos[minimo];
@@ -35,8 +38,20 @@ public class Main {
             System.out.println(textos[i]);            
         }
 
-
     }
+    public static int numerovocales(String palabra){
+        int vocales = 0;
+        for(int x=0; x<palabra.length();x++) {
+            char letraActual = palabra.charAt(x);
+            if (esVocal(letraActual)) vocales++;
+
+            }
+        return vocales;
+        }
+        private  static boolean esVocal(char letra){
+        return "aeiou".contains(String.valueOf(letra).toLowerCase());
+    }
+
 
     }
 

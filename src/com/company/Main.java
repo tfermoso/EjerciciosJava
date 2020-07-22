@@ -20,10 +20,13 @@ public class Main {
         for (int i = 0; i <textos.length-1 ; i++) {
             minimo=i;
             for (int j = i+1; j <textos.length ; j++) {
-                if (textos[j].length()<textos[minimo].length()){
-                    minimo=j;
-                }else if(contarVocales(textos[j])<contarVocales(textos[minimo])){
-                    minimo=j;
+                if (textos[j].length() == textos[minimo].length()) {
+                    if (contarVocales(textos[j]) > contarVocales(textos[minimo])) {
+                        minimo = j;
+                    }
+                }
+                else if (textos[j].length() <= textos[minimo].length()) {
+                    minimo = j;
                 }
             }
         aux=textos[i];

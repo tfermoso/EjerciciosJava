@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
+        //practica 10
         String[] textos=new String[10];
         Scanner leer=new Scanner(System.in);
         for (int i = 0; i < 10; i++) {

@@ -2,58 +2,66 @@ package com.company;
 
 import jdk.nashorn.internal.objects.NativeString;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     private static String aux;
+    private static Scanner leer;
 
     public static void main(String[] args) {
-        String[]textos=new String[10];
-        Scanner leer= new Scanner(System.in);
-        for (int i = 0; i <10 ; i++) {
-            System.out.println("Introduce texto: ");
-            textos[i]=leer.nextLine();
+
+        //leer los 24 numeros
+        int[] numeros = new int[24];
+        Scanner reader = new Scanner(System.in);
+        for (int i = 0; i < 24; i++) {
+            System.out.println("Introduce número: ");
+            numeros[i] = leer.nextInt();
+            leer.nextLine();
         }
+        //ordenar el array de numeros
         int minimo;
-        String aux;
-        for (int i = 0; i <textos.length-1 ; i++) {
-            minimo=i;
-            for (int j = i+1; j <textos.length ; j++) {
-                if (textos[j].length()<textos[minimo].length()){
-                    minimo=j;
-                }else if(textos[j].length()== textos[minimo].length()){
-                    if (numerovocales (textos[j])> numerovocales(textos[minimo])){
-                        minimo=j;
-
-                    }
-                }
-            }
-            aux=textos[i];
-            textos[i]=textos[minimo];
-            textos[minimo]=aux;
-            
-        }
-        for (int i = 0; i <textos.length ; i++) {
-            System.out.println(textos[i]);            
-        }
-
-    }
-    public static int numerovocales(String palabra){
-        int vocales = 0;
-        for(int x=0; x<palabra.length();x++) {
-            char letraActual = palabra.charAt(x);
-            if (esVocal(letraActual)) vocales++;
+        int aux;
+        for (int i = 0; i < numeros.length; i++) {
+            minimo = i;
+            for (int j = 0; j < numeros.length; j++) {
+                if (numeros[j] < numeros[minimo]) ;
+                minimo = 1;
 
             }
-        return vocales;
+            aux = numeros[i];
+            numeros[i] = numeros[minimo];
+            numeros[minimo] = aux;
         }
-        private  static boolean esVocal(char letra){
-        return "aeiou".contains(String.valueOf(letra).toLowerCase());
-    }
+
+        //for (int i = 0; i < numeros.length; i++) {
+        // System.out.println(numeros[i] + ",");
+        //}
+        //System.out.println("");
+        //}
+
+        // Llenar la matriz
+        int indice = 0;
+        int[][] matrizNumeros = new int[4][6];
+        for (int i = 0; i < matrizNumeros.length; i++)
+            for (int j = 0; j < matrizNumeros[0].length; j++) {
+                matrizNumeros[i][j] = numeros[indice];
+                indice++;
+            }
+
+        //mostrar la matriz de numeros
+        for (int i = 0; i < matrizNumeros.length; i++) {
+            for (int j = 0; j < matrizNumeros[0].length; j++) {
+                System.out.println(matrizNumeros[i][j] + ",");
+            }
+            System.out.println("");
+        }
 
 
     }
+}
 
 
 

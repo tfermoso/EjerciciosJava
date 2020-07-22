@@ -8,16 +8,38 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner leer = new Scanner(System.in);
+
         int [] num =new int[24];
+       num=leerNUmeros(num);
+
+        //ordenar el array de numeros
+        int[] arrayOrdenado;
+        arrayOrdenado=ordenarArray(num);
+
+        //llenar la matriz
 
 
-        for (int i = 0; i <24 ; i++) {
-            System.out.println("Escribe un numero: ");
-          num[i]=leer.nextInt();
-           leer.nextLine();
+        int [][]numerosMatriz = new int[4][6];
+    numerosMatriz=llenarMatriz(numerosMatriz,arrayOrdenado);
+
+        //mostrar la matriz
+       mostrarMatriz(numerosMatriz);
+    }
+
+    private static int[][] llenarMatriz(int[][] numerosMatriz, int[] arrayOrdenado) {
+        int indice=0;
+        for (int i = 0; i <numerosMatriz.length ; i++) {
+            for (int j = 0; j <numerosMatriz[0].length; j++) {
+                numerosMatriz[i][j] = arrayOrdenado[indice];
+                indice++;
+            }
+
 
         }
+        return numerosMatriz;
+    }
+
+    private static int[] ordenarArray(int[] num) {
         int menor;
         int aux;
         for (int i = 0; i <num.length-1 ; i++) {
@@ -32,17 +54,10 @@ public class Main {
             num[i]=num[menor];
             num[menor]=aux;
         }
-      int indice=0;
-        int [][]numerosMatriz = new int[4][6];
-        for (int i = 0; i <numerosMatriz.length ; i++) {
-            for (int j = 0; j <numerosMatriz[0].length; j++) {
-               numerosMatriz[i][j]=num[indice];
-               indice ++;
+        return num;
+    }
 
-            }
-
-        }
-        //mostrar la matriz
+    public static void mostrarMatriz(int[][]numerosMatriz){
         for (int i = 0; i <numerosMatriz.length ; i++) {
             for (int j = 0; j <numerosMatriz[0].length ; j++) {
                 System.out.print(numerosMatriz[i][j]+ "|");
@@ -51,4 +66,15 @@ public class Main {
             System.out.println("");
         }
     }
+   public static int[] leerNUmeros(int[]num) {
+       Scanner leer = new Scanner(System.in);
+       for (int i = 0; i < num.length; i++) {
+           System.out.println("Escribe un numero: ");
+           num[i] = leer.nextInt();
+           leer.nextLine();
+       }
+       return num;
+   }
     }
+
+

@@ -2,23 +2,39 @@ package com.company;
 
 import java.util.Scanner;
 
-
 public class Main {
 
     public static void main(String[] args) {
-        //practica 9.1
-        int []numeros=new int[24];
-        Scanner leer=new Scanner(System.in);
-        for (int i = 0; i < 24; i++) {
-            System.out.println("Introduce el texto: ");
-            numeros[i] = leer.nextInt();
-        }
+
+        //leemos 24 numeros
+        int[] numeros = new int[24];
+        numeros = leerNumeros(numeros);
+
+        //ordenamos el array de numeros
+        int[] arrayOrdenado;
+        arrayOrdenado = ordenarArray(numeros);
+
+        //llenar la matriz
+        int[][] matrizNumeros = new int[4][6];
+        matrizNumeros = llenarMatriz(matrizNumeros, arrayOrdenado);
+
+        //mostrar matriz
+        mostrarMatriz(matrizNumeros); //llama al metodo mostrar matriz
+
+    }
+
+    private static int[][] llenarMatriz(int[][] matrizNumeros, int[] arrayOrdenado) {
+        int indice = 0;
+        for (int i = 0; i < matrizNumeros.length; i++)
+            for (int j = 0; j < matrizNumeros[0].length; j++) {
+                matrizNumeros[i][j] = arrayOrdenado[indice];
+                indice++;
+            }
+        return matrizNumeros;
+    }
 
 
-
-
-
-        //Ordenar el Array;
+    private static int[] ordenarArray(int[] numeros) {
         int minimo;
         int aux;
         for (int i = 0; i < numeros.length - 1; i++) {
@@ -31,29 +47,32 @@ public class Main {
             aux = numeros[i];
             numeros[i] = numeros[minimo];
             numeros[minimo] = aux;
-
         }
-        //Llenar la matriz;
-        int[][]matrizNumeros=new int[4][6];
-        int indice=0;
-        //nºfilas;
-        for (int i = 0; i <matrizNumeros.length ; i++) {
-            //nºcolumnas;
-            for (int j = 0; j <matrizNumeros[0].length ; j++) {
-                matrizNumeros[i][j]=numeros[indice];
-                indice++;
+        return numeros;
 
+    }
+
+    public static void mostrarMatriz(int[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.print(matriz[i][j] + "/");
             }
-
-        }
-
-            //Pintar la matriz
-        for (int i = 0; i <matrizNumeros.length ; i++) {
-            //nºcolumnas;
-            for (int j = 0; j <matrizNumeros[0].length ; j++) {
-                System.out.print(matrizNumeros[i][j]+",");
-            }
-            System.out.println("----------");
+            System.out.println("");
         }
     }
+
+    public static int[] leerNumeros(int[] numeros) {
+        Scanner leer = new Scanner(System.in);
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println("Introduce numero: ");
+            numeros[i] = leer.nextInt();
+            leer.nextLine();
+
+
+        }
+        return numeros;
+    }
+
+
 }
+

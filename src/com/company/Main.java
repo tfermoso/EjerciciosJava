@@ -6,12 +6,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner leer = new Scanner(System.in);
-        Stack<String> pila = new Stack();
-        pila.push("hola");
-        pila.push("mundo");
+        Pila pila = new Pila("FIFO");
+        pila.push("sergio");
+        pila.push("valverde");
+
+
         System.out.println(pila.pop());
         System.out.println(pila.pop());
+
 
 
     }

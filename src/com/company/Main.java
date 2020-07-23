@@ -1,55 +1,27 @@
 package com.company;
 
 import java.util.Scanner;
-
+import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
+        Pila pila = new Pila("FIFO");
 
-        Scanner leer = new Scanner(System.in);
-        System.out.println("Introduce numero: ");
-        int a = leer.nextInt();
-        leer.nextLine();
-        System.out.println("Introduce numero: ");
-        int b = leer.nextInt();
-        int suma = calcularSumaNumeros(a, b);
-        System.out.println(suma);
-        System.out.println(factorial(suma));
+        pila.push("hola");
+        pila.push("mundo");
+        System.out.println(pila.pop());
+        System.out.println(pila.pop());
     }
-
-    private static int factorial(int n) {
-        if (n <= 1) return 1;
-        return n * factorial(n - 1);
-    }
-
-    private static int factorialInteractiva(int n) {
-        int producto = 1;
-        while (n > 1) {
-            producto = producto * n;
-            n--;
-        }
-        return producto;
-    }
-
-    private static int calcularSumaNumeros(int a, int b) {
-        int inicio, fin, suma = 0;
-        if (a > b) {
-            inicio = b;
-            fin = a;
-
-        } else {
-            inicio = a;
-            fin = b;
-        }
-        for (int i = inicio + 1; i < fin; i++) {
-            suma += i;
-
-        }
-        return suma;
-    }
-
 
 }
+
+
+       /* pila.push("hola");
+        pila.push("Raimundo");
+        pila.push("Perez");
+        System.out.println(pila.pop());
+        System.out.println(pila.pop());
+        System.out.println(pila.pop());*/
 
 
 

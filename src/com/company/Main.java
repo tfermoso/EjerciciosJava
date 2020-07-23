@@ -5,16 +5,16 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        Stack<String>pila=new Stack<>();
+        Pila pila = new Pila("LIFO");
         pila.push("hola");
         pila.push("mundo");
         System.out.println(pila.pop());
         System.out.println(pila.pop());
 
-
     }
-}
 
+
+}
 
 
 

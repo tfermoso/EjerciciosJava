@@ -6,7 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
        //Stack LIFO 10 Strings. Metodo meter. Metodo sacar.
-        Pila pila=new Pila();
+        System.out.println("Que tipo de pila quiere crear? \n" +
+                "1-LIFO \n" +
+                "2-FIFO");
+        Scanner leer = new Scanner(System.in);
+        int tipo=leer.nextInt();
+        Pila pila=new Pila(tipo);
         boolean saliendo=false;
         do {
             System.out.println("Elije opcion: \n" +
@@ -14,7 +19,6 @@ public class Main {
                     "2-Sacar cadena \n" +
                     "3- Leer pila \n" +
                     "4-Salir");
-            Scanner leer = new Scanner(System.in);
             int opcion = leer.nextInt();
             leer.nextLine();
             switch (opcion) {

@@ -1,34 +1,62 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class Pila {
-    private String[] pila=new String[10];
-    private int contador=0;
-    public String push(String cadena){
-        if (contador<10){
-            pila[contador]=cadena;
-            contador++;
-            return "Cadena agregada";
-        }else{
-            return "Pila llena";
-        }
-    }
-    public String pop(){
-        if (contador>0){
-            String cadenaEliminado= pila[contador-1];
-            pila[contador-1]="";
-            contador--;
-            return "La cadena '"+cadenaEliminado+"' ha sido eliminado de la pila";
+   private Stack<String> lifo;
+   private LinkedList<String> fifo;
+   private String tipo;
 
+   public Pila(int tipo){
+       if (tipo==1){
+           this.tipo="LIFO";
+           this.lifo=new Stack<>();
+       }else if (tipo==2){
+           this.tipo="FIFO";
+           this.fifo=new LinkedList<>();
+       }else {
+           try {
+               throw new Exception();
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       }
+   }
+   public String pop(){
+      if (tipo.equals("FIFO")){
+          return fifo.removeLast();
+      }else{
+         return lifo.pop();
+      }
+
+   }
+   public String push(String cadena) {
+        if (tipo.equals("LIFO")){
+            if (lifo.size()<10) {
+                lifo.push(cadena);
+                return "Cadena añadida";
+            }else {
+                return "Pila llena";
+            }
         }else {
-            return "La pila está vacia";
+            if (fifo.size()<10) {
+                fifo.push(cadena);
+                return "Cadena añadida";
+            } else  {
+                return "Pila llena";
+            }
         }
-    }
+   }
+
     @Override
     public String toString() {
-        return "Pila: " +
-                Arrays.toString(pila);
+       if (tipo.equals("LIFO")){
+           return "Pila{ \n" +lifo;
+       }else {
+           return "Pila{ \n "+fifo;
+       }
     }
 }
 

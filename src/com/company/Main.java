@@ -2,13 +2,16 @@ package com.company;
 
 public class Main {
     public  static void main(String[] args){
-        Punto p=new Punto(4,6);
-        System.out.println(p.imprimir());
-        p.cambiar();
-        System.out.println(p.imprimir());
-        Punto3D p3d=new Punto3D(3,5,6);
-        System.out.println(p3d.imprimir());
-        p3d.cambiar(10);
-        System.out.println(p3d.imprimir());
+        CuentaMovimiento cuenta=new CuentaMovimiento(100);
+        cuenta.ingresar(300);
+        cuenta.ingresar(1000);
+        cuenta.ingresar(460);
+        cuenta.retirar(1200);
+        cuenta.retirar(3000);
+        cuenta.ingresar(400);
+        String[][] movimientos=cuenta.consultarMovimientos();
+        for (int i = 0; i < movimientos.length; i++) {
+            System.out.println("Tipo: "+movimientos[i][0]+", cantidad: "+movimientos[i][1]);
+        }
     }
 }

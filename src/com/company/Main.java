@@ -11,14 +11,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Punto punto=new Punto(4,6);
-        System.out.println(punto.imprimir());
-        punto.cambiar();
-        System.out.printf(punto.imprimir());
-        Punto3D punto3D=new Punto3D(4,5,6);
-        System.out.println(punto3D.imprimir());
-        punto3D.cambiar(20);
-        System.out.println(punto3D.imprimir());
+        Scanner leer=new Scanner(System.in);
+
+        CuentaMovimiento cuenta=new CuentaMovimiento(100);
+        cuenta.ingresar(300);
+        cuenta.ingresar(800);
+        cuenta.ingresar(700);
+        cuenta.retirar(500);
+        cuenta.retirar(200);
+        String[][] movimientos=cuenta.consultaMovimientos();
+
+        for (int i = 0; i < movimientos.length ; i++) {
+            System.out.println("Tipo: "+movimientos[i][0] + "cantidad: "+ movimientos[i][0]);
+
+        }
 
     }
 }

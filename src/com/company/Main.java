@@ -1,52 +1,55 @@
 package com.company;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class Main {
 
+import java.util.Scanner;
 
-    public static void main(String[] args) {
+    public class Main {
 
-        Scanner leer = new Scanner(System.in);
-        System.out.println("Ingresa el primer valor: ");
-      int a=leer.nextInt();
-        System.out.println("Ingresa el segundo Valor: ");
-        int b=leer.nextInt();
-        int suma=calcularSumaNumeros(a,b);
-        System.out.println(suma);
-        System.out.println(factorial(suma));
-    }
+        public static void main(String[] args) {
+            // write your code here
 
-    private static int factorial(int n) {
-        int iFactorial = 1;
-        for (int i=2;i<=n;i++)
-            iFactorial = iFactorial * i;
-        return iFactorial;
-    }
-
-    private static int calcularSumaNumeros(int a, int b) {
-        int inicio = 0, fin = 0, suma=0;
-        if (a == b) {
-            System.out.println("Datos iguales.");
-        } else {
-            if (a > b) {
-                inicio = b;
-                fin = a;
-            } else {
-                inicio = a;
-                fin = b;
-            }
+            //Añadir nota Mostrar media Total aprobados Mostrar notas introducidas Salir
+            boolean salir=false;
+            Scanner leer=new Scanner(System.in);
+            Notas notas=new Notas();
+            do {
+                System.out.println("Menu : \n" +
+                        "1-Añadir nota \n" +
+                        "2-Mostrar media \n" +
+                        "3-Total aprobados \n" +
+                        "4-Mostrar notas \n" +
+                        "5-Salir");
+                int opcion=leer.nextInt();
+                leer.nextLine();
+                switch (opcion){
+                    case 1:
+                        System.out.println("Introduzca nueva nota");
+                        double nota=leer.nextDouble();
+                        if(notas.añadirNota(nota)){
+                            System.out.println("Nota añadida correctamente");
+                        }else {
+                            System.out.println("Lista de notas llena");
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Media : "+notas.mostrarMedia());
+                        break;
+                    case 3:
+                        System.out.println("Total aprobados: "+notas.mostrarAprobados());
+                        break;
+                    case 4:
+                        System.out.println("Notas : \n"+notas.mostrarNotas());
+                        break;
+                    case 5:
+                        salir=true;
+                        break;
+                }
+            }while (!salir);
         }
-        for (int i = inicio+1; i < fin; i++) {
-            suma+=i;
-        }
-        return suma;
     }
-    }
-
-
 
 
 

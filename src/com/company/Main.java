@@ -1,17 +1,23 @@
 package com.company;
 
-import java.util.*;
+
 
 public class Main {
 
     public static void main(String[] args) {
-        Punto p = new Punto(3, 5);
-        System.out.println(p.imprimir());
-        p.cambiar();
-        System.out.println(p.imprimir());
-        Punto3D p3=new Punto3D(2,5,8);
-        System.out.println(p3.imprimir());
-        p3.cambiar();
-        System.out.println(p3.imprimir());
+CuentaMovimientos cuenta=new CuentaMovimientos(100);
+cuenta.ingresarM(300);
+cuenta.ingresarM(1000);
+cuenta.ingresarM(1500);
+cuenta.retirarM(200);
+cuenta.retirarM(300);
+cuenta.ingresarM(400);
+cuenta.retirarM(500);
+String [][]movimientos=cuenta.consultar();
+        for (int i = 0; i <movimientos.length ; i++) {
+
+            System.out.println("Tipo:" + movimientos[i][0]+",Cantidad:" + movimientos[i][1]);
+
+        }
     }
 }

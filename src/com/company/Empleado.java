@@ -3,10 +3,10 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Empeado implements Icapa2 {
+public class Empleado implements Icapa2 {
     private List<Integer> notas;
 
-    public Empeado() {
+    public Empleado() {
         this.notas=new ArrayList<>();
     }
 

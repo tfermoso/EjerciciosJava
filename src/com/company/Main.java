@@ -1,23 +1,26 @@
 package com.company;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-Punto p=new Punto(4,6);
-        System.out.println(p.imprimir());
-        p.cambiar();
-        System.out.println(p.imprimir());
+        CuentaMovimientos cuenta = new CuentaMovimientos(1500);
+        cuenta.ingresarM(500);
+        cuenta.retirarM(200);
+        cuenta.ingresarM(120);
+        cuenta.retirarM(110);
+        cuenta.ingresarM(900);
+        cuenta.retirarM(50);
+        String[][] movimientos = cuenta.consultarMovimientos();
+        for (int i = 0; i < movimientos.length; i++) {
+            System.out.println("Tipo: " + movimientos[i][0] + ", cantidad:" + movimientos[i][1]);
 
-        Punto3D p3d=new Punto3D(3,5,2);
-        System.out.println(p3d.Imprimir());
-        p3d.cambiar(3);
-        System.out.println(p3d.Imprimir());
-
+        }
+        System.out.println("Tu saldo actual es de: " + cuenta.saldo);
     }
+
 }
-
-
 
 

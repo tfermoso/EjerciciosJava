@@ -44,6 +44,6 @@ public class Empleado implements Icapa2 {
             n[i]=notas.get(i);
 
         }
-        return new int[0];
+        return n;
     }
 }

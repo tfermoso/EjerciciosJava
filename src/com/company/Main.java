@@ -2,14 +2,24 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-        Punto p = new Punto(4, 6);
-        System.out.println(p.imprimir());
-        p.cambiar();
-        System.out.println(p.imprimir());
-        Punto3D p3d = new Punto3D(3, 6, 6);
-        System.out.println(p3d.imprimir());
-        p3d.cambiar(10);
-        System.out.println(p3d.imprimir());
 
+        CuentaMovimientos cuenta = new CuentaMovimientos(100);
+        cuenta.ingresarM(300);
+        cuenta.ingresarM(400);
+        cuenta.ingresarM(500);
+        cuenta.ingresarM(300);
+        cuenta.ingresarM(800);
+        cuenta.ingresarM(300);
+        cuenta.retirarM(1000);
+
+
+        String[][] movimientos = cuenta.consultarMovimientos();
+        for (int i = 0; i < movimientos.length; i++) {
+            System.out.println("Tipo: " + movimientos[i][0] + ",Cantidad: " + movimientos[i][1]);
+
+        }
     }
+
 }
+
+

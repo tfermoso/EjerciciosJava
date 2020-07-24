@@ -9,12 +9,12 @@ public class Punto {
         Y = y;
     }
     public String imprimir(){
-        return "X= "+this.X+" | Y= "+this.Y;
+        return "X= "+X+" | Y= "+Y;
     }
     public void cambiar(){
         int aux=0;
-        aux=this.X;
-        this.X=this.Y;
-        this.Y=aux;
+        aux=X;
+        X=Y;
+        Y=aux;
     }
 }

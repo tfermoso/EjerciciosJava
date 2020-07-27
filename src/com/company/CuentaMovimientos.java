@@ -1,59 +1,81 @@
 package com.company;
 
+import java.sql.Struct;
+
 public class CuentaMovimientos extends Cuenta {
     private String[][] movimientos;
     private int contador;
+    private boolean bloqueoCta;
 
     public CuentaMovimientos(double saldo) {
         super(saldo);
-        this.movimientos = new String[5][2];
+        this.movimientos = new String[5][4];
         this.contador = 0;
-
+        bloqueoCta = true;
     }
 
     public void ingresarM(double cantidad) {
-        this.saldo += cantidad;
-        registrarMovimientos("Ingresar", cantidad);
-
+        if (cantidad > 0) {
+            this.saldo += cantidad;
+            registrarMovimientos("Ingresar", cantidad, true, "");
+        } else {
+            registrarMovimientos("Ingresar", cantidad, false, "Ingreso no valido, operacion no aceptada");
+        }
     }
+
 
     public void retirarM(double cantidad) {
-        this.saldo = cantidad;
-        registrarMovimientos("Retirar", cantidad);
+        if (saldo >= cantidad & bloqueoCta == false) {
+            this.saldo = cantidad;
+            registrarMovimientos("Retirar", cantidad, true, "");
+        } else if (bloqueoCta = true) {
+            registrarMovimientos("Retirar", cantidad, false, "Cta. bloqueada");
+        } else {
+            registrarMovimientos("Retirar", cantidad, false, "Saldo Cta. insuficiente");
+        }
     }
 
-    private void registrarMovimientos(String tipo, double cantidad) {
+
+    private void registrarMovimientos(String tipo, double cantidad, boolean op, String msg) {
         if (contador < 5) {
             movimientos[contador][0] = tipo;
             movimientos[contador][1] = String.valueOf(cantidad);
+            movimientos[contador][2] = String.valueOf(op);
+            movimientos[contador][3] = msg;
             contador++;
         } else {
             for (int i = 1; i < movimientos.length; i++) {
                 movimientos[i - 1][0] = movimientos[i][0];
                 movimientos[i - 1][1] = movimientos[i][1];
+                movimientos[i - 1][2] = movimientos[i][2];
+                movimientos[i - 1][3] = movimientos[i][3];
             }
             contador = 4;
-            registrarMovimientos(tipo, cantidad);
+            registrarMovimientos(tipo, cantidad, op, msg);
         }
     }
 
     public String[][] consultarMovimientos() {
         return movimientos;
     }
+
+    public void extraer(double cantidad) {
+        saldo = saldo - cantidad;
+    }
+
+    public boolean resultadoUltimaOperacion() {
+        return Boolean.valueOf(movimientos[contador - 1][2]);
+    }
+
+    public void bloquear() {
+        this.bloqueoCta = true;
+    }
+
+    public void desbloquear() {
+        this.bloqueoCta = false;
+    }
 }
- /*double totalCuenta;
-
-        Cuenta Cuenta1;
-        Cuenta1 = new Cuenta(11111, 2500.70);
-
-        totalCuenta = Cuenta1.saldo();
-        System.out.println("Total actual en la cuenta: " + totalCuenta + " €");
-
-        double ingreso = -350.25;
-        System.out.println("Se ingresan en la cuenta: " + ingreso + " €");
-        Cuenta1.depositar(ingreso);
-
-        System.out.println("-------------------------------------------------");
-
-        totalCuenta = Cuenta1.saldo();
-        System.out.println("Total actual en la cuenta: " + totalCuenta + " €");*/
+  /*public void bloqueoCtaMsg (double cantidad){
+        if (saldo<cantidad){
+            registrarMovimientos("Retirar",cantidad, false, "Cta. bloqueada");
+        }*/

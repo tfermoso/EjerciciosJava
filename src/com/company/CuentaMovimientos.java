@@ -15,6 +15,7 @@ public class CuentaMovimientos extends Cuenta {
     }
 
     public void ingresarM(double cantidad) {
+
         if (cantidad > 0) {
             this.saldo += cantidad;
             registrarMovimientos("Ingresar", cantidad, true, "");
@@ -74,7 +75,14 @@ public class CuentaMovimientos extends Cuenta {
     public void desbloquear() {
         this.bloqueoCta = false;
     }
+
+    public double consultarSaldo() {
+        return saldo;
+    }
+
+
 }
+
   /*public void bloqueoCtaMsg (double cantidad){
         if (saldo<cantidad){
             registrarMovimientos("Retirar",cantidad, false, "Cta. bloqueada");

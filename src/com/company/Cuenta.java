@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Cuenta {
     protected double saldo;
 
@@ -7,10 +9,11 @@ public class Cuenta {
         this.saldo = saldo;
     }
     public void ingresar(double i){
-        this.saldo+=i ;
+        this.saldo+=i;
     }
     public void retirar(double r){
-        this.saldo-=r ;
+        this.saldo-=r;
     }
+
 
 }

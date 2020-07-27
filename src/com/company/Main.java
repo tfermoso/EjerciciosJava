@@ -78,10 +78,10 @@ public class Main {
         cuenta.ingresarM(cantidad);
     }
 
-    private static void mostrarResultadoUltimaOp(CuentaMovimientos cuenta){
-        if(cuenta. resultadoUltimaOperacio()){
+    private static void mostrarResultadoUltimaOp(CuentaMovimientos cuenta) {
+        if (cuenta.resultadoUltimaOperacio()) {
             System.out.println("Operación realizada con éxito");
-        }else{
+        } else {
             System.out.println("Error al realizar la operación");
         }
     }

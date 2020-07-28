@@ -7,6 +7,7 @@ public class CuentaMovimientos extends Cuenta {
     private int contador;
     private boolean bloqueoCta;
 
+
     public CuentaMovimientos(double saldo) {
         super(saldo);
         this.movimientos = new String[5][4];
@@ -27,7 +28,7 @@ public class CuentaMovimientos extends Cuenta {
 
     public void retirarM(double cantidad) {
         if (saldo >= cantidad & bloqueoCta == false) {
-            this.saldo = cantidad;
+            this.saldo -= cantidad;
             registrarMovimientos("Retirar", cantidad, true, "");
         } else if (bloqueoCta = true) {
             registrarMovimientos("Retirar", cantidad, false, "Cta. bloqueada");

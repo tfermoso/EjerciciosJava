@@ -25,15 +25,19 @@ public class Main {
             //System.out.println("Tipo: "+movimientos[i][0]+", Cantidad: "+movimientos[i][1]+", Resultado: "+movimientos[i][2]+", msg: "+movimientos[i][3]);
         //}
         Scanner leer = new Scanner(System.in);
-        CuentaMovimientos cuenta = new CuentaMovimientos(0);
-        String menu="Operaciones disponibles\n" +
-                    "1. Ingresar dinero \n" +
-                    "2. Retirar dinero \n" +
-                    "3. Consultar saldo disponible \n" +
-                    "4. Consultar ultimos movimientos \n" +
-                    "5. Bloquear cuenta \n" +
-                    "6. Desbloquear cuenta \n" +
-                    "7. Salir";
+        //CuentaMovimientos cuenta = new CuentaMovimientos(0);
+        CuentasClientes cuentas=new CuentasClientes();
+        String menu=
+                "Operaciones disponibles\n" +
+                    "1. Crear cuenta \n"+
+                    "2. Seleccionar cuenta \n"+
+                    "3. Ingresar dinero \n" +
+                    "4. Retirar dinero \n" +
+                    "5. Consultar saldo disponible \n" +
+                    "6. Consultar ultimos movimientos \n" +
+                    "7. Bloquear cuenta \n" +
+                    "8. Desbloquear cuenta \n" +
+                    "9. Salir \n";
             int opcion;
 
             do {
@@ -41,40 +45,70 @@ public class Main {
                 opcion=leer.nextInt();
                 leer.nextLine();
                 switch (opcion) {
+
                 case 1:
+
+                    System.out.println("Nombre del titular de la cuenta: ");
+                    String nombre= leer.nextLine();
+                    cuentas.crearCuenta(nombre,0);
+                    break;
+
+                case 2:
+
+                    System.out.println("Titular: ");
+                    String titular=leer.nextLine();
+                    cuentas.seleccionarCuenta(titular);
+                    break;
+
+                case 3:
+
                     System.out.println("Cantidad a ingresar: ");
                     double cantidad=leer.nextDouble();
                     leer.nextLine();
-                    cuenta.ingresarI(cantidad);
-                    mostrarResultadoUltimaOp(cuenta);
+                    cuentas.ingresar(cantidad);
+                    mostrarResultadoUltimaOp(cuentas);
                     break;
-                case 2:
+
+                case 4:
+
                     System.out.println("Cantidad a retirar: ");
                     cantidad=leer.nextDouble();
                     leer.nextLine();
-                    cuenta.retirarR(cantidad);
-                    mostrarResultadoUltimaOp(cuenta);
+                    cuentas.retirar(cantidad);
+                    mostrarResultadoUltimaOp(cuentas);
                     break;
-                case 3:
-                    System.out.println("Su saldo es: ");
-                    System.out.println(cuenta.consultarSaldo() +" €");
-                    break;
-                case 4:
-                    String[][]movimientos= cuenta.consultarMovimientos();
-                    for (int i = 0; i <movimientos.length ; i++) {
-                        System.out.println("Tipo: "+movimientos[i][0]+", cantidad: "+movimientos[i][1]+
-                                ", Result: "+movimientos[i][2]+", msg: "+movimientos[i][3]); }
-                    break;
+
                 case 5:
-                    cuenta.bloquear();
+
+                    System.out.println("Su saldo es: ");
+                    System.out.println(cuentas.consultarSaldo() +" €");
                     break;
+
                     case 6:
-                        cuenta.desbloquear();
+
+                        String[][]movimientos= cuentas.ultimoMovimiento();
+                        for (int i = 0; i <movimientos.length ; i++) {
+                            System.out.println("Tipo: "+movimientos[i][0]+", cantidad: "+movimientos[i][1]+
+                                    ", Resul: "+movimientos[i][2]+", Msg: "+movimientos[i][3]); }
                         break;
-                case 7:
+
+                    case 7:
+
+                        cuentas.bloquear();
+                        break;
+
+                    case 8:
+
+                        cuentas.desbloquear();
+                        break;
+
+                case 9:
+
                     System.out.println("Hasta pronto...");;
                     break;
+
                 default:
+
                     System.out.println("Opción no válida");
                     break;
             }
@@ -83,9 +117,7 @@ public class Main {
     }
 
 
-
-
-    public static void mostrarResultadoUltimaOp(CuentaMovimientos cuenta){
+    public static void mostrarResultadoUltimaOp(CuentasClientes cuenta){
         if ((cuenta.resultadoUltimaOperacion())){
             System.out.println("Operación realizada con éxito");
         }else{

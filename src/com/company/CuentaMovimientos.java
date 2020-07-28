@@ -5,6 +5,7 @@ public class CuentaMovimientos extends Cuenta {
     private int contador;
     private boolean bloqueado;
 
+
     public CuentaMovimientos(double saldo) {
         super(saldo);
         this.movimientos = new String[5][4];

@@ -79,6 +79,7 @@ public class CuentaMovimientos extends Cuenta {
     public void desbloquear(){this.bloqueado=false;}
 
     public double consultaSaldo(){
+
         return saldo;
     }
 }

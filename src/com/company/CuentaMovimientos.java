@@ -4,11 +4,13 @@ public class CuentaMovimientos extends Cuenta {
     private String[][] movimientos;
 private int contador;
 private boolean bloqueo;
+
     public CuentaMovimientos(double saldo) {
         super(saldo);
         this.movimientos=new String[5][4];
         this.contador=0;
         bloqueo=false;
+
     }
     public void ingresarM(double cantidad){
         if (cantidad<0){

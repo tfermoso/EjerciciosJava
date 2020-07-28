@@ -7,6 +7,7 @@ public class CuentaMovimientos extends Cuenta{
         super(saldo);
         this.movimientos=new String[5][4];
         this.contador=0;
+
     }
 
     public void ingresar(double cantidad) {
@@ -38,7 +39,7 @@ public class CuentaMovimientos extends Cuenta{
         }
         }
     }
-    private void registrarMovimiento(String tipo, double cantidad, boolean okey,String msg){
+    protected void registrarMovimiento(String tipo, double cantidad, boolean okey,String msg){
 if (contador<5){
     movimientos[contador][0]=tipo;
     movimientos[contador][1]=String.valueOf(cantidad);

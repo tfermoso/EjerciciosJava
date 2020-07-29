@@ -6,24 +6,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {//aplicación en consola
-        //ejercicio
-         //CuentaMovimientos cuenta=new CuentaMovimientos(100);
-         //cuenta.ingresarI(-300);
-         //cuenta.ingresarI(1000);
-         //cuenta.ingresarI(400);
-         //cuenta.retirarR(12000);
-         //mostrarResultadoUltimaOp(cuenta);
-         //cuenta.retirarR(100);
-         //mostrarResultadoUltimaOp(cuenta);
-         //cuenta.bloquear();
-         //cuenta.retirarR(3000);
-         //cuenta.ingresarI(400);
-        //cuenta.ingresarI(-300);
-        //mostrarResultadoUltimaOp(cuenta);
-        //String[][] movimientos=cuenta.consultarMovimientos();
-        //for (int i = 0; i < movimientos.length; i++) {
-            //System.out.println("Tipo: "+movimientos[i][0]+", Cantidad: "+movimientos[i][1]+", Resultado: "+movimientos[i][2]+", msg: "+movimientos[i][3]);
-        //}
+
         Scanner leer = new Scanner(System.in);
         //CuentaMovimientos cuenta = new CuentaMovimientos(0);
         CuentasClientes cuentas=new CuentasClientes();
@@ -136,7 +119,24 @@ public class Main {
         }
 
     }
-
+//ejercicio
+    //CuentaMovimientos cuenta=new CuentaMovimientos(100);
+    //cuenta.ingresarI(-300);
+    //cuenta.ingresarI(1000);
+    //cuenta.ingresarI(400);
+    //cuenta.retirarR(12000);
+    //mostrarResultadoUltimaOp(cuenta);
+    //cuenta.retirarR(100);
+    //mostrarResultadoUltimaOp(cuenta);
+    //cuenta.bloquear();
+    //cuenta.retirarR(3000);
+    //cuenta.ingresarI(400);
+    //cuenta.ingresarI(-300);
+    //mostrarResultadoUltimaOp(cuenta);
+    //String[][] movimientos=cuenta.consultarMovimientos();
+    //for (int i = 0; i < movimientos.length; i++) {
+    //System.out.println("Tipo: "+movimientos[i][0]+", Cantidad: "+movimientos[i][1]+", Resultado: "+movimientos[i][2]+", msg: "+movimientos[i][3]);
+    //}
 
 
 

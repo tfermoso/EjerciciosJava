@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Cuenta {
+public class Cuenta {//clase padre
     protected double saldo;
 
     public Cuenta(double saldo) {

@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {//aplicación en consola
         //ejercicio
          //CuentaMovimientos cuenta=new CuentaMovimientos(100);
          //cuenta.ingresarI(-300);
@@ -27,8 +27,12 @@ public class Main {
         Scanner leer = new Scanner(System.in);
         //CuentaMovimientos cuenta = new CuentaMovimientos(0);
         CuentasClientes cuentas=new CuentasClientes();
-        String menu=
-                "Operaciones disponibles\n" +
+        String menuP="Operaciones disponibles\n" +
+                "1. Crear cuenta \n"+
+                "2. Seleccionar cuenta \n"+
+                "9. Salir \n";
+
+        String menu= "Operaciones disponibles\n" +
                     "1. Crear cuenta \n"+
                     "2. Seleccionar cuenta \n"+
                     "3. Ingresar dinero \n" +
@@ -41,6 +45,12 @@ public class Main {
             int opcion;
 
             do {
+                if (cuentas.cuentaSeleccionada()){
+                    System.out.println(menu);
+                }else{
+                    System.out.println(menuP);
+                }
+
                 System.out.println(menu);
                 opcion=leer.nextInt();
                 leer.nextLine();

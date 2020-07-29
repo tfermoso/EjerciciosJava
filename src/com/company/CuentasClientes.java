@@ -3,13 +3,13 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CuentasClientes implements iCuentas{
+public class CuentasClientes implements iCuentas{///implementacio interfaz icuentas /lista
     private List<CuentaTitular> cuentas;
     private CuentaTitular cuentaSeleccionada;
 
     public CuentasClientes() {
         cuentas=new ArrayList<>();
-        cuentaSeleccionada=null;
+        cuentaSeleccionada=null;//constructor
     }
 
 
@@ -88,4 +88,13 @@ public class CuentasClientes implements iCuentas{
         }
         return false;
     }
+
+    public boolean cuentaSeleccionada() {
+        if (cuentaSeleccionada == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

@@ -1,30 +1,30 @@
 package com.company;
 
-public class CuentaMovimientos extends Cuenta {
+public class CuentaMovimientos extends Cuenta {//cuenta hija
     private String[][] movimientos;
     private int contador;
     private boolean bloqueado;
 
 
-    public CuentaMovimientos(double saldo) {
-        super(saldo);
+    public CuentaMovimientos(double saldo) {//constructor
+        super(saldo);//llamar constructor clase padre
         this.movimientos = new String[5][4];
         this.contador = 0;
         bloqueado=false;
     }
 
-    public void ingresarI(double cantidad) {
+    public void ingresarI(double cantidad) {//metodo
         if (cantidad>0 ) {
-            this.ingresar(cantidad);
+            this.ingresar(cantidad);//sumar cantidad al saldo
             //this.saldo += cantidad;
-            registrarMovimiento("Ingresar", cantidad, true, "");
+            registrarMovimiento("Ingresar", cantidad, true, "");//operación
         }else{
             registrarMovimiento("Ingresar", cantidad, false, "Cantidad negativa");
         }
 
     }
 
-    public void retirarR(double cantidad) {
+    public void retirarR(double cantidad) {//metodo
         if (saldo>=cantidad&bloqueado==false){
            //if(saldo>=0)
 
@@ -39,7 +39,7 @@ public class CuentaMovimientos extends Cuenta {
 
     }
 
-    private void registrarMovimiento(String tipo, double cantidad, boolean op, String msg) {
+    private void registrarMovimiento(String tipo, double cantidad, boolean op, String msg) {//array
         if (contador < 5) {
             movimientos[contador][0] = tipo;
             movimientos[contador][1] = String.valueOf(cantidad);

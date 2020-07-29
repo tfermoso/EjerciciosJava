@@ -1,6 +1,6 @@
 package com.company;
 
-public interface iCuentas {
+public interface iCuentas {//interfaz y metodos
     public void crearCuenta(String titular, double saldo);
     public void seleccionarCuenta(String titular);
     public void ingresar(double saldo);
